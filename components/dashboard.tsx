@@ -58,7 +58,7 @@ export default function Dashboard() {
 
   // 노드 목록 fetch
   useEffect(() => {
-    fetch("/api/v1/gpu-dashboard/nodes")
+    fetch("0.0.0.1:8080/api/v1/gpu-dashboard/nodes")
       .then(res => res.json())
       .then((data: NodeSummary[]) => {
         setNodeList(data)
@@ -74,7 +74,7 @@ export default function Dashboard() {
     setSelectedGPUIndex(null)
     setShowJobs({})
     if (!nodeDetails[nodeName]) {
-      fetch(`/api/v1/gpu-dashboard/nodes/${nodeName}`)
+      fetch(`0.0.0.1:8080/api/v1/gpu-dashboard/nodes/${nodeName}`)
         .then(res => res.json())
         .then((detail: NodeDetail) => {
           setNodeDetails(prev => ({ ...prev, [nodeName]: detail }))
